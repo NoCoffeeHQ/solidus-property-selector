@@ -1,0 +1,5 @@
+bump:
+  recurse: false
+  file: 'lib/solidus_property_selector/version.rb'
+  message: Bump SolidusPropertySelector to %{version}
+  tag: true
