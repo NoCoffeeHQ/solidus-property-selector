@@ -1,0 +1,24 @@
+<!-- replace_contents 'div[data-hook="admin_property_form"]' -->
+
+<div class="col-5">
+  <%= f.field_container :name do %>
+  <%= f.label :name, class: 'required' %><br />
+  <%= f.text_field :name, class: 'fullwidth' %>
+  <%= f.error_message_on :name %>
+  <% end %>
+</div>
+<div class="col-5">
+  <%= f.field_container :presentation do %>
+  <%= f.label :presentation, class: 'required' %><br />
+  <%= f.text_field :presentation, class: 'fullwidth' %>
+  <%= f.error_message_on :presentation %>
+  <% end %>
+</div>
+<div class="col-2">
+  <%= f.field_container :value_type do %>
+  <%= f.label :value_type, class: 'required' %><br />
+    <%= f.select :value_type, Spree::Property.translated_value_types.map { |t, k, _v| [t, k] },
+                              {}, class: 'custom-select', disabled: !@property.new_record? %>
+  <%= f.error_message_on :value_type %>
+  <% end %>
+</div>

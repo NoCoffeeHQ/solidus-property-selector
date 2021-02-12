@@ -1,0 +1,33 @@
+<!-- replace_contents 'table#listing_properties' -->
+
+<colgroup>
+  <col style="width: 30%">
+  <col style="width: 35%">
+  <col style="width: 20%">
+  <col style="width: 15%">
+</colgroup>
+<thead>
+  <tr data-hook="option_header">
+    <th><%= Spree::Property.human_attribute_name(:name) %></th>
+    <th><%= Spree::Property.human_attribute_name(:presentation) %></th>
+    <th><%= Spree::Property.human_attribute_name(:value_type) %></th>
+    <th class="actions"></th>
+  </tr>
+</thead>
+<tbody>
+  <% @properties.each do |property| %>
+    <tr class="spree_property" id="<%= spree_dom_id property %>" data-hook="option_row">
+      <td><%= property.name %></td>
+      <td><%= property.presentation %></td>
+      <td><%= Spree::Property.translated_value_type(property.value_type) %></td>
+      <td class="actions">
+        <% if can?(:update, property) %>
+          <%= link_to_edit(property, class: 'admin_edit_property', no_text: true) %>
+        <% end %>
+        <% if can?(:destroy, property) %>
+          <%= link_to_delete(property, no_text: true) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</tbody>

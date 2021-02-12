@@ -1,0 +1,13 @@
+---
+fr:
+  activerecord:
+    attributes:
+      spree/property:
+        value_type_list:
+          text: Texte
+          selector: Sélecteur  
+  spree:
+    admin:
+      tab:
+        property_values: Valeurs des propriétés
+    add_property_value: Ajouter une valeur de propriété

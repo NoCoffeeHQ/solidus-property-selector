@@ -1,0 +1,53 @@
+<% admin_breadcrumb(link_to plural_resource_name(Spree::Product), spree.admin_products_path) %>
+<% admin_breadcrumb(link_to plural_resource_name(Spree::Property), spree.admin_properties_path) %>
+<% admin_breadcrumb(@property.name) %>
+
+<% if @property.selector? %>
+  <% content_for :page_actions do %>
+    <li>
+      <span id="new_add_property_value" data-hook>
+        <%= button_tag t('spree.add_property_value'), type: 'button',
+         data: { target: 'tbody#property_values' },
+         class: 'btn btn-primary spree_add_fields' %>
+      </span>
+    </li>
+  <% end %>
+<% end %>
+
+<%= render partial: 'spree/shared/error_messages', locals: { target: @property } %>
+
+<%= form_for [:admin, @property] do |f| %>
+  
+  
+  <fieldset class="no-border-bottom">
+    <legend><%= Spree::Property.model_name.human %></legend>
+    <%= render partial: 'form', locals: { f: f } %>
+    <% if @property.text? %>
+      <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+    <% end %>
+  </fieldset>
+
+  
+  <% if @property.selector? %>
+    <fieldset>
+      <legend><%= plural_resource_name(Spree::PropertyValue) %></legend>
+      <table class="index sortable" data-hook data-sortable-link="<%= update_values_positions_admin_properties_url %>">
+        <thead data-hook="option_header">
+          <tr>
+            <th></th>
+            <th><%= Spree::PropertyValue.human_attribute_name(:name) %></th>
+            <th><%= Spree::PropertyValue.human_attribute_name(:presentation) %></th>
+            <th class="actions"></th>
+          </tr>
+        </thead>
+        <tbody id="property_values">
+          <%= f.fields_for :property_values, @property_values do |property_value_form| %>
+            <%=  render partial: 'property_value_fields', locals: { f: property_value_form } %>
+          <% end %>
+        </tbody>
+      </table>
+      <%= render partial: 'spree/admin/shared/edit_resource_links' %>
+    </fieldset>
+  <% end %>
+<% end %>
+

@@ -1,0 +1,2 @@
+class SpreeProductPropertyValue < ApplicationRecord
+end

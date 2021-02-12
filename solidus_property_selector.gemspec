@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'lib/solidus_property_selector/version'
+require 'translate_enum'
 
 Gem::Specification.new do |spec|
   spec.name = 'solidus_property_selector'
@@ -31,6 +32,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'solidus_core', ['>= 2.0.0', '< 3']
   spec.add_dependency 'solidus_support', '~> 0.5'
+  spec.add_dependency 'translate_enum', '~> 0.1.3'
 
   spec.add_development_dependency 'solidus_dev_support', '~> 2.4'
 end
