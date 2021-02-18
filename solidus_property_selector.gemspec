@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative 'lib/solidus_property_selector/version'
-require 'translate_enum'
 
 Gem::Specification.new do |spec|
   spec.name = 'solidus_property_selector'

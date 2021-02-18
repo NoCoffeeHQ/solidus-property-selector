@@ -1,16 +1,16 @@
 <!-- replace_contents 'td.value' -->
 
-<% if f.object.property.text? %>
+<% if f.object.new_record?  %>
+  <div class="js-product-property-values"></div>
+<% elsif f.object.property.text?  %>
   <%= f.text_field :value %>
 <% else %>
-  <%= f.collection_select 'property_value_ids',
-    property.property_values,
-    :id,
-    :presentation,
-    { include_blank: true },
-   {
-     name: 'product[propert_value_ids][]',
-     class: "custom-select fullwidth",
-     id: "property_value_ids_#{property.presentation}"
-   } %>
+  <%= f.collection_select 'property_value_id',
+   f.object.property.property_values,
+   :id,
+   :presentation,
+   { include_blank: false },
+   { class: 'custom-select fullwidth'}
+  %>
 <% end %>
+

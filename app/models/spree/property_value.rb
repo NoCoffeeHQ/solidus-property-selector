@@ -6,5 +6,6 @@ module Spree
 
     belongs_to :property, class_name: 'Spree::Property',
                           inverse_of: :property_values, optional: true
+    has_many :product_properties, inverse_of: :property_value, dependent: :destroy
   end
 end

@@ -1,0 +1,14 @@
+{{#if isText}}
+  <input type="text" id="product_product_properties_attributes_{{productPropertyId}}_value" 
+         name="product[product_properties_attributes][{{productPropertyId}}][value]"
+  />
+{{else}}
+  <select type="text" id="product_product_properties_attributes_{{productPropertyId}}_property_value_id" 
+          name="product[product_properties_attributes][{{productPropertyId}}][property_value_id]"
+          class="custom-select fullwidth"
+  >
+    {{#each propertyValues}}
+      <option value="{{id}}">{{ presentation }}</option>
+    {{/each}}
+  </select>
+{{/if}}
