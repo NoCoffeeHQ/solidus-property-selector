@@ -1,8 +1,6 @@
 <!-- replace_contents 'td.value' -->
 
-<% if f.object.new_record?  %>
-  <div class="js-product-property-values"></div>
-<% elsif f.object.property.text?  %>
+<% if f.object.new_record? || f.object.property.text? %>
   <%= f.text_field :value %>
 <% else %>
   <%= f.collection_select 'property_value_id',

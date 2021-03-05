@@ -60,6 +60,5 @@ Spree.ready(function() {
     return el.attr('id').split('_')[4];
   }
   
-  console.log('doudou');
   initProducPropertyActions();
 });
